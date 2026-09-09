@@ -1,3 +1,3 @@
-# General Machine Intelligence Inc.
+# General Machine
 
 https://generalmachine.ai
