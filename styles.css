@@ -20,6 +20,9 @@
   --gray: oklch(65% 0.01 286);
   --gray-100: color-mix(in srgb, white 80%, var(--gray));
   --gray-980: color-mix(in srgb, black 95%, var(--gray));
+  /* Same hue family as --gray. Green in light, violet in dark. */
+  --mark: light-dark(oklch(84% 0.14 150), oklch(68% 0.12 292));
+  --mark-fg: light-dark(oklch(26% 0.05 150), oklch(18% 0.04 292));
   --font: "IBM Plex Mono", ui-monospace, "SF Mono", "SFMono-Regular", Menlo,
     Monaco, "Cascadia Mono", Consolas, "Liberation Mono", monospace;
 }
@@ -51,8 +54,8 @@ html {
 }
 
 ::selection {
-  background: #ffff00;
-  color: #000;
+  background: var(--mark);
+  color: var(--mark-fg);
 }
 
 a {
@@ -90,29 +93,25 @@ pre {
 }
 
 .header {
-  display: inline-block;
-  line-height: 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 24px;
+  max-width: 480px;
   margin-bottom: 80px;
+  font-weight: 700;
+  line-height: 18px;
+  text-transform: uppercase;
 }
 
-.cursor {
-  display: inline-block;
-  width: 1ch;
-  height: 14px;
-  background: currentColor;
-  vertical-align: -3px;
-  animation: flash 1s infinite;
+.header p {
+  margin: 0;
 }
 
-@keyframes flash {
-  0%,
-  50% {
-    opacity: 1;
-  }
-  51%,
-  100% {
-    opacity: 0;
-  }
+.when {
+  flex-shrink: 0;
+  text-align: right;
+  white-space: nowrap;
 }
 
 .h2 {
@@ -146,8 +145,4 @@ button[aria-pressed="true"] {
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .cursor {
-    animation: none;
-  }
-}
+
